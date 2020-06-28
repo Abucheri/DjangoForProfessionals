@@ -1,5 +1,7 @@
 from django.test import SimpleTestCase
-from django.urls import reverse
+from django.urls import reverse, resolve
+
+from .views import HomePageView
 
 
 class HomePageTest(SimpleTestCase):
@@ -15,3 +17,8 @@ class HomePageTest(SimpleTestCase):
 
     def test_homepage_contains_correct_html(self):
         self.assertContains(self.response, 'Homepage')
+
+    def test_homepage_url_resolve_homepageview(self):
+        resolve_obj = resolve('/')
+        self.assertEqual(resolve_obj.func.__name__,
+                         HomePageView.as_view().__name__)
