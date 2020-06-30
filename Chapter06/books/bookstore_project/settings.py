@@ -127,9 +127,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#
+# Customizations
 
+# Static files dir
+# dev
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+# prod
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_FINDER = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+
+# Custom User Model
 AUTH_USER_MODEL = 'users.CustomUser'
 
+# Custom Login behavior
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
