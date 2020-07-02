@@ -158,8 +158,14 @@ ACCOUNT_LOGOUT_REDIRECT = 'home'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # django-allauth config
+# https://django-allauth.readthedocs.io/en/latest/configuration.html
 SITE_ID = 1
 ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
