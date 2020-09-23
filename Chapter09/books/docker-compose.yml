@@ -1,24 +1,28 @@
-version: '3.7'
+version: '3.8'
 
 services: 
+  
   web:
     build: .
-    command: python /code/manage.py runserver 0.0.0.0:8000
+    image: books
     volumes: 
       - .:/code
-    ports: 
+    ports:
       - 8000:8000
     env_file: 
-      - .web.env
+      - .env/web.env
+    command: python /code/manage.py runserver 0.0.0.0:8000
     depends_on: 
       - db
   
   db:
     image: postgres
-    volumes: 
-      - postgres_data:/var/lib/postgresql/data/
     env_file: 
-      - .db.env
+      - ./.env/db.env
+    volumes:
+      - django-books:/var/lib/postgresql/data
 
 volumes: 
-  postgres_data:
+  django-books:
+    external: true
+    name: django-books
