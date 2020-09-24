@@ -20,9 +20,9 @@ services:
     env_file: 
       - ./.env/db.env
     volumes:
-      - django-books:/var/lib/postgresql/data
+      - books_postgres_data:/var/lib/postgresql/data
 
 volumes: 
-  django-books:
+  books_postgres_data:
     external: true
-    name: django-books
+    name: books_postgres_data
