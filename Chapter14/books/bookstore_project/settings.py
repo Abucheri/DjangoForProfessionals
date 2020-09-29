@@ -193,3 +193,7 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_PASSWORD')
 EMAIL_PORT = 587  # 25, 587  (for unencrypted/TLS connections)
 EMAIL_USE_TSL = True
+
+# Stripe
+STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
+STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')
