@@ -211,3 +211,21 @@ INTERNAL_IPS = [ip[:-1] + '1' for ip in ips]
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 604800   # 1 week
 CACHE_MIDDLEWARE_KEY_PREFIX = ''
+
+# Production
+if os.environ.get('ENV') == 'production':
+    # Force browser to enable XXS filter
+    SECURE_BROWSER_XSS_FILTER = True
+    # No clickjacking
+    X_FRAME_OPTIONS = 'DENY'
+    # SSL
+    SECURE_SSL_REDIRECT = True
+    # HTTP Strict Transport Security
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    # Defer browser from interpreting content
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    # Cookies only over HTTPS
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
