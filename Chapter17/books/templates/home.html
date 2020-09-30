@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+  <h1>Homepage</h1>
+  <form action="{% url 'search_results' %}" class="form-inline mt-2 mt-md-0" method="GET">
+    <input type="text" name="q" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+  </form>
+  <img
+    class="bookcover"
+    src="{% static 'images/djangoforprofessionals.jpg' %}"
+    alt="djangoforprofessionals cover"
+  />
+  {% if user.is_authenticated %}
+    <p>Hi {{ user.username }}!</p>
+    <p>
+      <a href="{% url 'account_logout' %}">Log Out</a>
+    </p>
+  {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'account_login' %}">Login</a><br>
+    <a href="{% url 'account_signup' %}">Sign Up</a>
+  {% endif %}
+
+{% endblock content %}
